@@ -9,7 +9,8 @@ import Sidebar from "./components/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import LocomotiveScroll from "locomotive-scroll";
 import Quiz from "./components/Quiz";
-
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 function App() {
   useEffect(() => {
     /* eslint-disable */
@@ -29,6 +30,8 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="//explore/editor" element={<ChallangeEditor />} />
           <Route path="/HTMLquiz" element={<Quiz />} />
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/Login" element={<Login/>}/>
         </Routes>
       </div>
     </>

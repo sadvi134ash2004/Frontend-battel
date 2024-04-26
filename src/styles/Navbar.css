@@ -32,3 +32,15 @@
     background-image: url("../images/dark-light.png");
     filter: invert(1);
 }
+.bn{
+    letter-spacing: 2px;
+    padding: 6px;
+    border-radius: 6px;
+    background-color:#7b7b7b;
+    color: rgb(27, 26, 26);
+    transition: all ease 1ms;
+}
+.bn:hover{
+    background-color:#2a86ff;
+    
+}

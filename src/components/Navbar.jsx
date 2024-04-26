@@ -21,6 +21,7 @@ export default function Navbar() {
                 </Link>
             </div>
             <input type="radio" className='mode' checked={checked} onClick={mode} />
+            <Link to='/signup'><button className='bn'>Login</button></Link>
         </nav>
     )
 }
