@@ -37,10 +37,10 @@
     padding: 6px;
     border-radius: 6px;
     background-color:#7b7b7b;
-    color: rgb(27, 26, 26);
+    color:black;
     transition: all ease 1ms;
 }
 .bn:hover{
     background-color:#2a86ff;
-    
+    color: #fff;
 }

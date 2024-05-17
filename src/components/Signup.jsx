@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"; 
+import {useNavigate, Link} from "react-router-dom"; 
 // import {Link} from "react-router-dom"
 import axios from 'axios';
 function Signup() { 
@@ -10,7 +10,7 @@ function Signup() {
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3001/register',{name,email,password})
+    axios.post('http://localhost:8080/register',{name,email,password})
     .then(result=>{console.log(result)
       navigate('/login')
     })
@@ -65,9 +65,7 @@ function Signup() {
           </div>
           <button type="submit" style={{ background: '#28a745', width: '100%', borderRadius: '0.25rem', border: 'none', color: '#fff',padding:'0.25rem',marginTop:'0.5rem' }}>Register</button>
         </form>
-        <p style={{color: 'black',marginBottom:'0.5rem',marginTop:'0.5rem'}}>Already Have An Account</p>
-        {/* <Link to='/login' className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"> Login</Link> */}
-        <a href="/login" style={{ background: '#f8f9fa', width: '100%', border: '1px solid #dee2e6', borderRadius: '0.25rem', textDecoration: 'none', textAlign: 'center', display: 'block', color: '#000',marginTop:'0.5rem' }}>Login</a>
+        <p style={{color: 'black',marginBottom:'0.5rem',marginTop:'0.5rem'}}>Already Have An Account?<Link to='/Login'><span style={{"color": "blue", "textDecoration":"underline"}}>Login</span></Link> </p>
        
       </div>
     </div>

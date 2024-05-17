@@ -1,0 +1,20 @@
+.supercontainer {
+    background-color: var(--bg-color-200);
+  }
+.quizscontainer {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.plssub{
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.plssub:hover{
+    background-color: #0056b3;
+}
+.question {
+    margin-bottom: 30px;
+}

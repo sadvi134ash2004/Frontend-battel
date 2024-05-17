@@ -44,3 +44,16 @@ input[type="text"] {
 .btt-2:hover {
   background-color: #0056b3;
 }
+.NP{
+  color:black;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.NP:hover{
+  background-color: #0056b3;
+  color: white;
+}

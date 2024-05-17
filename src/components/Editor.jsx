@@ -1,5 +1,6 @@
 import React from "react";
 import AceEditor from "react-ace";
+import axios from "axios";
 
 import "ace-builds/src-noconflict/mode-html";
 import "ace-builds/src-noconflict/mode-css";
@@ -16,6 +17,25 @@ export default function Editor(props) {
         height,
         codes
     } = props
+
+    // Function to send user activity to server..
+    const UserActivity=(editedCode)=>{   
+        const api_Url="http://localhost:3001/writtingJob";
+
+        // loadData contains editedcode
+        const loadData={
+            userId:"user123",
+        };
+
+        // post request to the server to save changes..
+        axios.post(api_Url,loadData)
+            .then(res=>{
+                console.log("User activity tracked successfully:",res.data);
+            })
+            .catch(error=>{
+                console.log("Error no user activity:",error);
+            })
+    }
 
     return (
         <>
@@ -38,7 +58,10 @@ export default function Editor(props) {
                 enableBasicAutocompletion={true}
                 focus={true}
                 theme="dracula"
-                onChange={onChange}
+                onChange={(editedCode)=>{
+                    onChange(editedCode);
+                    UserActivity(editedCode)
+                }}
                 name="UNIQUE_ID_OF_DIV"
                 defaultValue={codes ? "<div></div>\n<style>\n\tdiv {\n\t\twidth: 100px;\n\t\theight: 100px;\n\t\tbackground: #17181a;\n\t}\n</style>" : ""}
                 editorProps={{ $blockScrolling: true }}

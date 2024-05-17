@@ -5,14 +5,19 @@ import { useNavigate } from "react-router-dom";
 function Login() { 
   const[email,setEmail]=useState()
   const[password,setPassword]=useState()
+  const [validate, setValidate] = useState("")
   const navigate= useNavigate()
 
   const handleSubmit=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3001/login',{email,password})
+    axios.post('http://localhost:8080/login',{email,password})
     .then(result=>{console.log(result)
       if(result.data==="Success"){
-        navigate('/')
+        setValidate("Login Sucessfully")
+        navigate("/")
+      }
+      else{
+        setValidate("Password Incorrect 🤬🤬")
       }
     })
     .catch(err=> console.log(err))
@@ -51,6 +56,7 @@ function Login() {
             />
           </div>
           <button type="submit" style={{ background: '#28a745', width: '100%', borderRadius: '0.25rem', border: 'none', color: '#fff',padding:'0.25rem',marginTop:'0.5rem' }}>Login</button>
+          <span style={{color: "red"}}>{validate}</span>
         </form>
         {/* <p style={{color: 'black',marginBottom:'0.5rem',marginTop:'0.5rem'}}>Already Have An Account</p>
         <Link to='/login' className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"> Login</Link>
