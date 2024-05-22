@@ -19,6 +19,9 @@ const Nextpage = () => {
     q5: ""
   });
 
+  const [score, setScore] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
@@ -56,9 +59,37 @@ const Nextpage = () => {
         userAnswer.every((item) => correctAnswer.includes(item))) ||
       userAnswer === correctAnswer
     ) {
-      setResults({ ...results, [`q${questionNumber}`]: "Correct!" });
+      setResults((prevResults) => ({ ...prevResults, [`q${questionNumber}`]: "Correct!" }));
+      return 1;
     } else {
-      setResults({ ...results, [`q${questionNumber}`]: "Wrong!" });
+      setResults((prevResults) => ({ ...prevResults, [`q${questionNumber}`]: "Wrong!" }));
+      return 0;
+    }
+  };
+
+  const handleSubmit = async () => {
+    let totalScore = 0;
+    totalScore += checkAnswer(1);
+    totalScore += checkAnswer(2);
+    totalScore += checkAnswer(3);
+    totalScore += checkAnswer(4);
+    totalScore += checkAnswer(5);
+
+    setScore(totalScore);
+    setIsSubmitted(true);
+
+    try {
+      const response = await fetch("http://localhost:8080/quizAttempted", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score: totalScore }),
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error("Error saving score:", error);
     }
   };
 
@@ -105,7 +136,6 @@ const Nextpage = () => {
             />
             d) const myVariable
           </label>
-          <button className="plssub" onClick={() => checkAnswer(1)}>Submit</button>
           <p className="resq1">{results.q1}</p>
         </div>
         <div className="question2">
@@ -146,7 +176,6 @@ const Nextpage = () => {
             />
             d) Object
           </label>
-          <button className="plssub" onClick={() => checkAnswer(2)}>Submit</button>
           <p className="resq2">{results.q2}</p>
         </div>
         <div className="question3">
@@ -187,7 +216,6 @@ const Nextpage = () => {
             />
             d) def
           </label>
-          <button className="plssub" onClick={() => checkAnswer(3)}>Submit</button>
           <p className="resq3">{results.q3}</p>
         </div>
         <div className="question4">
@@ -228,7 +256,6 @@ const Nextpage = () => {
             />
             d) Error
           </label>
-          <button className="plssub" onClick={() => checkAnswer(4)}>Submit</button>
           <p className="resq4">{results.q4}</p>
         </div>
         <div className="question5">
@@ -269,9 +296,14 @@ const Nextpage = () => {
             />
             d) shift()
           </label>
-          <button className="plssub" onClick={() => checkAnswer(5)}>Submit</button>
           <p className="resq5">{results.q5}</p>
         </div>
+        <button className="plssub" onClick={handleSubmit}>Submit All</button>
+        {isSubmitted && (
+          <div className="score-container">
+            <h2>Your Score: {score}/5</h2>
+          </div>
+        )}
         <Link to="/HTMLquiz">
           <button className="NP">Previous Page</button>
         </Link>
