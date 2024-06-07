@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../styles/Quiz.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from "../context/AuthContext";
 
 const Quiz = () => {
+  const { isLoggedIn } = useContext(AuthContext);
   const [answers, setAnswers] = useState({
     question1: "",
     question2: "",
@@ -11,7 +13,7 @@ const Quiz = () => {
     question4: "",
     question5: "",
   });
-  
+
   const [results, setResults] = useState({
     result1: "",
     result2: "",
@@ -77,22 +79,24 @@ const Quiz = () => {
     <div className="maincontainer">
       <div className="quiz-container">
         <h1>HTML QUIZ</h1>
+        <p style={{ color: "red", textAlign: "center", paddingBottom: "20px" }}>{isLoggedIn ? "" : "Please Login"}</p>
         {Array.from({ length: 5 }, (_, i) => (
           <div key={i + 1} className="question">
             <label htmlFor={`question${i + 1}`}>
               {`What HTML tag is used to ${['define input fields', 'create links', 'display an image', 'create a form', 'display a button'][i]}?`}
             </label>
             <input
+              disabled={!isLoggedIn}
               type="text"
               id={`question${i + 1}`}
               name={`question${i + 1}`}
               value={answers[`question${i + 1}`]}
               onChange={handleChange}
             />
-            <button onClick={() => showAnswer(i + 1)} className="btt-1">
+            <button onClick={() => showAnswer(i + 1)} disabled={!isLoggedIn} className="btt-1">
               Show Answer
             </button>
-            <button onClick={() => checkAnswer(i + 1)} className="btt-2">
+            <button onClick={() => checkAnswer(i + 1)} disabled={!isLoggedIn} className="btt-2">
               Submit
             </button>
             <p>{results[`result${i + 1}`]}</p>
@@ -103,9 +107,9 @@ const Quiz = () => {
         ) : (
           <p>Your overall score is: {score} / 5</p>
         )}
-        <Link to="/nextpage"><button className="NP">Next Page</button></Link>
+        <Link to="/nextpage"><button style={{ cursor: "pointer" }} className="NP">Next Page</button></Link>
       </div>
-    </div>
+    </div >
   );
 };
 

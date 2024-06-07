@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../styles/nextpage.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Nextpage = () => {
+
+  const { isLoggedIn } = useContext(AuthContext);
   const [answers, setAnswers] = useState({
     q1: "",
     q2: [],
@@ -104,8 +107,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q1"
-              value="a"
-              onChange={handleChange}
+              value="a" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             a) var myVariable
           </label>
@@ -113,8 +116,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q1"
-              value="b"
-              onChange={handleChange}
+              value="b" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             b) variable myVariable
           </label>
@@ -122,8 +125,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q1"
-              value="c"
-              onChange={handleChange}
+              value="c" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             c) let is myVariable
           </label>
@@ -131,8 +134,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q1"
-              value="d"
-              onChange={handleChange}
+              value="d" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             d) const myVariable
           </label>
@@ -144,8 +147,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q2"
-              value="a"
-              onChange={handleChange}
+              value="a" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             a) Number
           </label>
@@ -153,8 +156,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q2"
-              value="b"
-              onChange={handleChange}
+              value="b" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             b) String
           </label>
@@ -162,8 +165,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q2"
-              value="c"
-              onChange={handleChange}
+              value="c" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             c) Boolean
           </label>
@@ -171,8 +174,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q2"
-              value="d"
-              onChange={handleChange}
+              value="d" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             d) Object
           </label>
@@ -184,8 +187,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q3"
-              value="a"
-              onChange={handleChange}
+              value="a" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             a) let
           </label>
@@ -193,8 +196,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q3"
-              value="b"
-              onChange={handleChange}
+              value="b" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             b) const
           </label>
@@ -202,8 +205,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q3"
-              value="c"
-              onChange={handleChange}
+              value="c" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             c) var
           </label>
@@ -211,8 +214,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q3"
-              value="d"
-              onChange={handleChange}
+              value="d" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             d) def
           </label>
@@ -224,8 +227,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q4"
-              value="a"
-              onChange={handleChange}
+              value="a" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             a) 4
           </label>
@@ -233,8 +236,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q4"
-              value="b"
-              onChange={handleChange}
+              value="b" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             b) "22"
           </label>
@@ -242,8 +245,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q4"
-              value="c"
-              onChange={handleChange}
+              value="c" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             c) 2"2"
           </label>
@@ -251,8 +254,8 @@ const Nextpage = () => {
             <input
               type="radio"
               name="q4"
-              value="d"
-              onChange={handleChange}
+              value="d" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             d) Error
           </label>
@@ -264,8 +267,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q5"
-              value="a"
-              onChange={handleChange}
+              value="a" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             a) pop()
           </label>
@@ -273,8 +276,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q5"
-              value="b"
-              onChange={handleChange}
+              value="b" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             b) slice()
           </label>
@@ -282,8 +285,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q5"
-              value="c"
-              onChange={handleChange}
+              value="c" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             c) splice()
           </label>
@@ -291,8 +294,8 @@ const Nextpage = () => {
             <input
               type="checkbox"
               name="q5"
-              value="d"
-              onChange={handleChange}
+              value="d" onChange={handleChange}
+              disabled={!isLoggedIn}
             />
             d) shift()
           </label>
