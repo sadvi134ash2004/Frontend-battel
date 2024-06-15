@@ -2,8 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import Editor from './Editor';
 import '../styles/ChallangeEditor.css';
 import ChallangesContext from '../context/ChallangesContext';
+// import { AuthContext } from "../context/AuthContext";
+
 
 export default function ChallangeEditor() {
+    // const { isLoggedIn } = useContext(AuthContext);
+
 
     const [srcDoc, setSrcDoc] = useState()
 
@@ -15,8 +19,8 @@ export default function ChallangeEditor() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setSrcDoc(`
-                <html>${code}</html>
-            `)
+                <html>${code}</html >
+    `)
         }, 500)
 
         return () => clearTimeout(timeout)
@@ -28,11 +32,13 @@ export default function ChallangeEditor() {
 
     return (
         <div className='ChallangeEditor'>
+
             <div>
                 <Editor language="html" onChange={onChangeCode} displayName="Code Here" width="600px" height="95%" codes={true} />
             </div>
             <div className="images">
                 <img src={challangeImage} alt="challenge" className='compare-image' />
+
                 <iframe
                     style={{ backgroundColor: "white" }}
                     className='challange'

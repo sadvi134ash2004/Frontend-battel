@@ -100,6 +100,7 @@ const Nextpage = () => {
     <div className="supercontainer">
       <div className="quizscontainer">
         <h1>JavaScript Quiz</h1>
+        <p style={{ color: "red", textAlign: "center", paddingBottom: "20px" }}>{isLoggedIn ? "" : "Please Login"}</p>
 
         <div className="question1">
           <p className="qq1">1. What is the correct way to declare a variable in JavaScript?</p>
